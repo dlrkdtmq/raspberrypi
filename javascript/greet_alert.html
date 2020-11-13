@@ -1,0 +1,22 @@
+﻿<html>
+<head>
+	<title>Local and Global Variables</title>
+	<script LANGUAGE="javascript">
+		name1 = "Fred";
+		name2 = "Ethel";
+		function greet(who) {
+   			var name2 = "Barney";
+			alert("Greetings," + who);
+		}
+	</script>
+</head>
+
+<body>
+	<h1>Function Example: the Sequel</h1>
+	<p>Prepare to be greeted twice.</p>
+	<script LANGUAGE="javascript">
+		greet(name1);
+		greet(name2);
+	</script>
+</body>
+</html>

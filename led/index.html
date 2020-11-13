@@ -1,0 +1,33 @@
+﻿<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Remote LED blinker</title>
+    <meta name="viewport" content="width=200, initial-scale=1, maximum-scale=1">
+  </head>
+  
+  <body>
+    <div align="center" style="margin: 0 0 10px 10px">
+      <ul>
+        <input type="button" style="font-size:20;width:70;height:60" value="1" onClick="cmd('ON')">
+        <input type="button" style="font-size:20;width:70;height:60" value="0" onClick="cmd('OFF')">
+      </ul>
+    </div>
+    <script language="javascript">
+      function cmd(value) {
+        if(window.XMLHttpRequest) {
+          request = new XMLHttpRequest();
+        }
+        if(!request) {
+          alert("XMLHttpRequest Error");
+          return false;
+        }
+        var send_msg = "command="+value;
+        request.open("POST", "/home/pi/ws/web-control", true);
+        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        request.setRequestHeader("Content-Length", send_msg.length);
+        request.setRequestHeader("Connection", "close");
+        request.send(send_msg);
+      }
+    </script>
+  </body>
+</html>
